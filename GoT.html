@@ -17,18 +17,22 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$('img').click(function(){
+				//grabs the id of the item that was clicked and the attr. grabs the attribute id which makes it dynamic
+				//the id is then added to the api link which makes it dynamic.
+				//which then callsback a function to display the houses. 
 				var id = $(this).attr('id');
-				$.get("https://anapioficeandfire.com/api/houses/{id}", displayHouses);
-				name = data.name
-				words = data.words
-				titles = data.titles
-				$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
+				$.get("https://anapioficeandfire.com/api/houses/" + id, displayHouses);
+
 			})
 			
 		});
 
 		function displayHouses(data){
-				console.log(data)
+				var name = data.name;
+				var words = data.words;
+				var titles = data.titles;
+				$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
+				console.log(data);
 			}
 		
 	</script>
