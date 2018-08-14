@@ -7,52 +7,27 @@
 </head>
 <body>
 	<div class="container">
-		<img class="house1" src="stark.jpg">
-		<img  class="house2" src="targaryen.jpg">
-		<img class="house3" src="lannister.jpg">
-		<img src="baratheon.png">
+		<img id="362" src="stark.jpg">
+		<img id="378" src="targaryen.jpg">
+		<img id="229" src="lannister.jpg">
+		<img id="17" src="baratheon.png">
 		<div class="info"></div>
 	</div>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$.get("https://anapioficeandfire.com/api/houses/", displayHouses);
+			$('img').click(function(){
+				var id = $(this).attr('id');
+				$.get("https://anapioficeandfire.com/api/houses/{id}", displayHouses);
+				name = data.name
+				words = data.words
+				titles = data.titles
+				$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
+			})
+			
 		});
 
 		function displayHouses(data){
-
-				$('.house1').click(function(){
-					$.get("https://anapioficeandfire.com/api/houses/362")
-					name = data.name
-					words = data.words
-					titles = data.titles
-
-					$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
-
-				});
-
-				$('.house2').click(function(){
-					$.get("https://anapioficeandfire.com/api/houses/378")
-
-					name = data.name
-					words = data.words
-					titles = data.titles
-
-					$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
-
-				});
-
-				$('.house3').click(function(){
-					$.get("https://anapioficeandfire.com/api/houses/229")
-
-					name = data.name
-					words = data.words
-					titles = data.titles
-
-					$('.info').append("<h2>Name:</h2>" + name + "<h2>Words:</h2>" + words + "<h2>Titles:</h2>" + titles);
-
-				});
-
 				console.log(data)
 			}
 		
