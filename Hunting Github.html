@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Hunting Github</title>
+		<!-- Imports the library, found on JQuery site !-->
+		<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+	</head>
+	<body>
+		<script type="text/javascript">
+			//Tells says when the document is 'ready' or loaded, then run the procesess.
+			//if this is not included JQuery will run before the HTML is loaded, or before it exists.
+			 $(document).ready(function(){
+
+			 	//select button, and on click do this function, get the github api and callback the displayName function
+			 	$('button').click(function(){
+			 		$.get("https://api.github.com/users/MichaelKirkaldyv", displayName)
+
+			 	});
+			 });
+
+			 //Declaring the function
+			 function displayName(data) {
+ 			 console.log(data);
+			}
+			
+
+
+		</script>
+
+		<button>Click Me!</button>
+
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GoT API</title>
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="GoT.css">
+</head>
+<body>
+	<div class="container">
+		<img src="stark.jpg">
+		<img  class="house2" src="targaryen.jpg">
+		<img src="lannister.jpg">
+		<img src="baratheon.png">
+		<div class="info"></div>
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$.get("https://583anapioficeandfire.com/api/houses/", displayHouses)
+
+			function displayHouses(data){
+
+				$('.house2').click(function(){
+					$.get("https://anapioficeandfire.com/api/houses/378")
+
+				});
+				console.log(data)
+			}
+
+
+		});
+		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivia Game</title>
+	<script src= 'http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<a href="">Continue with a new game</a></div>
+			<div class="body">
+				<button class="animals">Animals</button>
+				<h2></h2>
+
+			</div>
+		
+	</div>
+	<script type="text/javascript">
+
+		 $(document).ready(function(){
+		 		$.get("https://opentdb.com/api.php?amount=10&category=27&difficulty=easy&type=boolean", displayAnimal)
+		 	});
+
+		 function displayAnimal(data){
+		 	results = data.results;
+		 	for (var x = 0; x < data.results; X++){
+		 		$("h2").append(results[i]);
+		 	}
+		 	console.log(data)
+		 }
+
+		
+	</script>
+
+</body>
+</html>
