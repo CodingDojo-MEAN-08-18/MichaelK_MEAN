@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Class 2</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		function Ninja(name){
+			this.name = name;
+			this.health = 100;
+			//"Var" keyword makes the variables private
+			 var speed = 3;
+			 var strength = 3;
+
+			 //"This" keyword allows us to chain methods together.
+			 //In the context, this is referring to the Ninja object. 
+			this.sayName = function(){
+				console.log("My name is" + this.name);
+				return this;
+			}
+
+			this.kick = function(ninja){
+				//takes 5 health for every point of strength
+				//then takes points from the ninja's health passed into function
+				damage = strength * 5;
+				ninja.health -= damage;
+				//takes ninja's name passed and how much damage he lost from the ninja that kicked him.
+				console.log(ninja.name + " lost " + damage + " he took a kick from " + this.name);
+				return this;
+			}
+
+			Ninja.prototype.showStats = function(){
+				console.log("My name is" + this.name);
+				console.log("I have" + this.health + "health.");
+				//access the private variables by removing "this"
+				console.log("I am" + speed + "fast.");
+				console.log("I am" + strength + "strong!");
+				return this;
+			}
+		}
+
+		Ninja.prototype.punch = function(ninja){
+				ninja.health -= 5;
+				console.log(ninja.name + " was punched by " + this.name + " and lost 5 Health!");
+				return this;
+			}
+
+		Ninja.prototype.drinkSake = function(){
+				this.health += 10;
+				return this;
+			}
+		
+			var orangeNinja = new Ninja("Jubei");
+			var blueNinja = new Ninja("Goemon");
+
+			orangeNinja.punch(blueNinja);
+			blueNinja.kick(orangeNinja);
+			blueNinja.showStats();
+
+
+
+	</script>
+
+</body>
+</html>
