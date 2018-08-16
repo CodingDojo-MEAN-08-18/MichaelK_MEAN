@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BST Insert</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		function BST(){
+			this.root = null;
+		}
+
+		function Node(val){
+			this.value = val;
+			this.left = null;
+			this.right = null;
+		}
+		
+		//Instatiates a new BST called first.
+		//then creates a root node in first.
+		BST.prototype.insert = function(val){
+			var node = this.root;
+
+			if (node == null){
+				node = new Node(val);
+			console.log(node);
+			return;
+			}
+			else{
+				var searchTree = function(node){
+					if(val < node.val){
+						if(node.left == null){
+							node.left = new Node(val);
+						}
+					}
+				}
+				console.log(node.left);
+				return searchTree(node.left);
+
+			}
+		}
+
+
+
+
+		var first = new BST();
+		first.insert(50);
+		first.insert(30);
+
+
+	</script>
+
+</body>
+</html>
