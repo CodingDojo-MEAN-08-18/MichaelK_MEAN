@@ -16,36 +16,51 @@
 			this.right = null;
 		}
 		
-		//Instatiates a new BST called first.
+		//Creates a prototype which all instances inherit.
 		//then creates a root node in first.
-		BST.prototype.insert = function(val){
-			var node = this.root;
 
-			if (node == null){
-				node = new Node(val);
-			console.log(node);
-			return;
+		Node.prototype.add = function(node){
+			if (this.value > node.value){
+				if(this.left){
+					this.left.add(node);
+				}
+				else{
+					this.left = node;
+				}
+
 			}
 			else{
-				var searchTree = function(node){
-					if(val < node.val){
-						if(node.left == null){
-							node.left = new Node(val);
-						}
-					}
+				if(this.right){
+					this.right.add(node);
 				}
-				console.log(node.left);
-				return searchTree(node.left);
-
+				else{
+					this.right = node;
+				}
 			}
+
+		}
+
+
+		BST.prototype.insert = function(val){
+			var node = new Node(val);
+
+			if(this.root === null){
+				this.root = node;
+			}
+			else{
+				this.root.add(node);
+			}
+			console.log(this);
+			return this;
 		}
 
 
 
 
 		var first = new BST();
-		first.insert(50);
-		first.insert(30);
+		first.insert(50).insert(30).insert(15).insert(70);
+		
+
 
 
 	</script>
