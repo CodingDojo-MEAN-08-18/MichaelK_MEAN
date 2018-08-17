@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BST Insert</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		function BST(){
+			this.root = null;
+		}
+
+		function Node(val){
+			this.value = val;
+			this.left = null;
+			this.right = null;
+		}
+		
+		//Creates a prototype which all instances inherit.
+		//then creates a root node in first.
+
+		Node.prototype.add = function(node){
+			//takes root node and it's less than the node's value which is a property of all nodes.
+			if (this.value > node.value){
+				//says if there is a left node, let "this" mean the left node
+				//and add the node to the left of the left node.
+				if(this.left){
+					this.left.add(node);
+				}
+				//if there isn't a a left node. 
+				//set the left node to the new node.
+				else{
+					this.left = node;
+				}
+
+			}
+			else{
+				if(this.right){
+					this.right.add(node);
+				}
+				else{
+					this.right = node;
+				}
+			}
+
+		}
+
+
+		BST.prototype.insert = function(val){
+			//sets node equal to a new node with the value used when called. 
+			var node = new Node(val);
+			//if there isn't a root node, set the root node equal to the node variable. 
+			if(this.root === null){
+				this.root = node;
+			}
+			else{
+				//if there is a root node, take root and call the Node add function which takes the node as an argument.
+				this.root.add(node);
+			}
+			//"this" in this context refrers to BST.
+			console.log(this);
+			return this;
+		}
+
+//______________________TRAVERSAL METHODS____________________________________________________________//
+
+
+		//Explores BST from left most leaf to right most leaf or (left subtree, root, right subtree)
+		BST.prototype.InOrder = function(){
+			if(this.root === null){
+				return null;
+			}
+			else{
+				//creates an array called list where the node values will be pushed. 
+				var list = new Array();
+				function traverseInOrder(node){
+					//if left node exists, then call the traverseInOrder function, which pushes the node value into the array.
+					//if pre && evaulates to true, JS will run the expression post &&.
+					node.left && traverseInOrder(node.left);
+					list.push(node.value);
+					node.right && traverseInOrder(node.right);
+					}
+				traverseInOrder(this.root);
+				return list;
+				}
+		}
+
+		//Explores BST from root node first, then left subtree, then right subtree starting with left leaf nodes first.
+		BST.prototype.preOrder = function(){
+			if(this.root === null){
+				return null;
+			}
+			else{
+				var list = new Array();
+				function traversePreOrder(node){
+					list.push(node.value);
+					node.left && traversePreOrder(node.left);
+					node.right && traversePreOrder(node.right);
+				}
+				traversePreOrder(this.root);
+				return list;
+			}
+
+		}
+
+		//Explores BST from leaf nodes first, then parent nodes. (from left subtree to right subtree) then the root.
+		BST.prototype.postOrder = function(){
+			if(this.root === null){
+				return null;
+			}
+			else{
+				var list = new Array();
+				function traversePostOrder(node){
+					node.left && traversePostOrder(node.left);
+					node.right && traversePostOrder(node.right);
+					list.push(node.value);
+					
+				}
+				traversePostOrder(this.root);
+				return list;
+			}
+
+		}
+
+
+		//Instatiates a new BST called first.
+		//Calls first and the insert method it inherited from the proto.
+		var first = new BST();
+		first.insert(50).insert(30).insert(15).insert(70);
+
+		var second = new BST();
+		second.insert(19).insert(22).insert(49).insert(99);
+		console.log(second.root)
+
+		console.log("InOrder" + first.InOrder());
+		console.log("PreOrder" + first.preOrder());
+		console.log("PostOrder" + first.postOrder());
+		
+
+
+
+	</script>
+
+</body>
+</html>
