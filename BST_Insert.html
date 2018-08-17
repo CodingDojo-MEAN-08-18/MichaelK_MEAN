@@ -20,10 +20,15 @@
 		//then creates a root node in first.
 
 		Node.prototype.add = function(node){
+			//takes root node and it's less than the node's value which is a property of all nodes.
 			if (this.value > node.value){
+				//says if there is a left node, let "this" mean the left node
+				//and add the node to the left of the left node.
 				if(this.left){
 					this.left.add(node);
 				}
+				//if there isn't a a left node. 
+				//set the left node to the new node.
 				else{
 					this.left = node;
 				}
@@ -42,21 +47,25 @@
 
 
 		BST.prototype.insert = function(val){
+			//sets node equal to a new node with the value used when called. 
 			var node = new Node(val);
-
+			//if there isn't a root node, set the root node equal to the node variable. 
 			if(this.root === null){
 				this.root = node;
 			}
 			else{
+				//if there is a root node, take root and call the Node add function which takes the node as an argument.
 				this.root.add(node);
 			}
+			//"this" in this context refrers to BST.
 			console.log(this);
 			return this;
 		}
 
 
 
-
+		//Instatiates a new BST called first.
+		//Calls first and the insert method it inherited from the proto.
 		var first = new BST();
 		first.insert(50).insert(30).insert(15).insert(70);
 		
