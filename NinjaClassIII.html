@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Class III</title>
+</head>
+<body>
+	<script type="text/javascript">
+		
+		class Ninja{
+			constructor(name){
+				this.name = name;
+				this.health = 100;
+				this.speed = 3;
+				this.strength = 3;
+			}
+
+			sayName(){
+				console.log(`My name is` + this.name);
+			}
+
+			showStats(){
+				console.log(`My name is` + this.name);
+				console.log(`I am this strong` + this.strength);
+				console.log(`Here is my health` + this.health);
+				console.log(`I'm` + this.speed `fast`);
+			}
+
+			drinkSake(){
+				this.health += 10;
+				return this;
+			}
+		}
+
+		//
+		class Sensei extends Ninja{
+			constructor(name){
+				super(name);
+				this.health = 200;
+				this.speed = 10;
+				this.strength = 10;
+				this.wisdom = 10;
+			}
+
+			speakWisdom(){
+				super.drinkSake();
+				console.log(`We are saddened by a bird's cry but not a fishes blood.`);
+			}
+
+			showStats(){
+				console.log(`Name: ${this.name}, Health: ${this.health}, Speed: ${this.speed}, Strength: ${this.strength}, Wisdom: ${this.wisdom}`);
+			}
+
+		}
+
+		var superSensei = new Sensei("Splinter");
+		superSensei.speakWisdom();
+		superSensei.showStats();
+	</script>
+
+</body>
+</html>
