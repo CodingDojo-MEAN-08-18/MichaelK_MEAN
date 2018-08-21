@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Deck of Cards</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+		
+		class Card{
+			constructor(){
+				this.suit = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+				this.stringval = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King'];
+				this.numberVal = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+			}
+
+			show(){
+				//
+				const ranSuit = Math.floor(Math.random()*4);
+                const ranNum = Math.floor(Math.random()*13);
+				console.log(`Suit:` + this.suit[ranSuit], `Value:` + this.stringval[ranNum], `Number:` + this.numberVal[ranNum]);
+			}
+		}
+
+		var card_a = new Card();
+		card_a.show();
+
+		//-------------------------------------------------------------------//
+
+		class Deck{
+			constructor(){
+				this.deck = [];
+				this.reset();
+			}
+
+			//Reset the deck
+			reset() {
+                this.deck = [];
+                const suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+                const stringVals = ['Ace', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King'];
+
+                //for every suit in suits
+                //for every value in String vals
+                //push into the empty deck to make new deck.
+                for( const suit in suits){
+                	for(const vals in stringVals){
+                		this.deck.push(`${vals} of ${suit}`);
+                	}
+                }
+            return this;
+			}
+
+			//Shuffle
+			shuffle() {
+	                let shuffleIt = this.deck.length, newOrder, shuffling;
+	                while (shuffleIt) {
+	                    shuffling = Math.floor(Math.random() * shuffleIt--);
+	                    newOrder = this.deck[shuffleIt];
+	                    this.deck[shuffleIt] = this.deck[shuffling];
+	                    this.deck[shuffling] = newOrder;
+	                }
+	                return this;
+	            }
+
+			 deal() {
+	            return this.deck.pop();
+	        }
+
+	        cardCount() {
+                return this.deck.length;
+            }
+           }
+
+            var deck_a = new Deck();
+
+            deck_a.shuffle();
+            console.log(deck_a);
+            console.log(`Deal:`)
+            deck_a.deal();
+            console.log(deck_a);
+            deck_a.deal();
+            console.log(deck_a);
+            deck_a.cardCount();
+            console.log(deck_a);
+
+   //---------------------------------------------------------------------//
+
+
+   class Player{
+   	constructor(name){
+   		this.name = name;
+   		this.hand = [];
+   	}
+
+	   	 makeHand(deck, numCards) {
+	                this.hand.push(deck)
+	                for (let count = 1; count < numCards; count++ ) {
+	                    let newCard = deck.deal();
+	                    this.hand.push(`${newCard}`);
+	                }
+	                return this;
+	               }
+
+	   	draw(deck){
+	            this.hand.push(deck.deal());
+	            return this;
+	         }
+
+	    discard(){
+                this.hand.pop();
+                return this;
+            }
+   }
+
+   	var player_1 = new Player("Michael");
+   	player_1.makeHand(deck_a, 7);
+   	console.log(player_1);
+   	player_1.draw(deck_a);
+   	console.log(player_1);
+   	player_1.discard();
+   	console.log(player_1);
+
+
+
+
+            
+
+		
+
+
+	</script>
+
+</body>
+</html>
