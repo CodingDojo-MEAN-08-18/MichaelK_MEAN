@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cat Details</title>
+</head>
+<body>
+	<h1>Favorite Food:</h1>
+	<h3><% for (var x in details["favorite_food"]) { %>
+     <p><%= details["favorite_food"][x] %></p>
+     <% } %>
+ 	</h3>
+	<h1>Age:</h1>
+	<h3><%= details["age"] %></h3>
+	<h1>Sleeping Spots:</h1>
+	<h3><%= details["sleeping_spot"] %></h3>
+
+</body>
+</html>
