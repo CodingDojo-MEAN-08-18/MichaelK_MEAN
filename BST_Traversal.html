@@ -57,8 +57,8 @@
 				//if there is a root node, take root and call the Node add function which takes the node as an argument.
 				this.root.add(node);
 			}
-			//"this" in this context refrers to BST.
-			console.log(this);
+			//"this" in this context refers to BST.
+			//This allows us to chain methods.
 			return this;
 		}
 
@@ -123,18 +123,59 @@
 		}
 
 
+//______________________________________BST DEPTH_______________________________________________
+
+
+		//This function checks the depth or levelorder of a BST. It starts from the root and checks its children from left to right,
+		//then moves to the left node and checks it children. 
+		//Once the left subtree is completed, it moves to the right subtree.
+		BST.prototype.depth = function(){
+			var list = [];
+			var queue = [];
+			//if there is a root node.
+			//push the root node to the temporary queue.
+			if(this.root !== null){
+				queue.push(this.root);
+
+				//While the length of the queue is less than 0,
+				//.shift() takes the first value of a list.
+				//sets it to a node variable.
+				//Then pushes the nodes value to the list.
+				//checks to see if there is a left node, if there is push it to the queue.
+				//and then loop sback up and using the .shift() takes the value of the node and sets it to a node
+				//then pushes the nodes value to the list. 
+				while(queue.length > 0){
+					var node = queue.shift();
+					list.push(node.value);
+					if(node.left != null){
+						queue.push(node.left);
+					}
+					if(node.right != null){
+						queue.push(node.right);
+					}
+
+				}
+				//return the list of nodes.
+				return list;
+			}
+			//if there isn't a root node. return null.
+			else{
+				return null;
+			}
+
+
+		}
+
+
 		//Instatiates a new BST called first.
 		//Calls first and the insert method it inherited from the proto.
 		var first = new BST();
 		first.insert(50).insert(30).insert(15).insert(70);
 
-		var second = new BST();
-		second.insert(19).insert(22).insert(49).insert(99);
-		console.log(second.root)
-
 		console.log("InOrder" + first.InOrder());
 		console.log("PreOrder" + first.preOrder());
 		console.log("PostOrder" + first.postOrder());
+		console.log("Depth" + first.depth());
 		
 
 
