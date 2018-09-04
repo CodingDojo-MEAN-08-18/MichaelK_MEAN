@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit an otter</title>
+</head>
+<body>
+	<h1>Edit the selected Otter.</h1>
+	<form action="/otters/edit/<%= otter._id %>">
+		<label>Name:<input type="text" name="name" value="<%= otter.name %>"></label>
+		<label>Height:<input type="text" name="name" value="<%= otter.height %>"></label>
+		<label>Weight:<input type="text" name="name" value="<%= otter.weight %>"></label>
+		<input type="submit" name="submit" value="Add changes">
+	</form>
+</body>
+</html>
