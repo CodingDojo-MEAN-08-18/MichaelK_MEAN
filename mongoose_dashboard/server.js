@@ -29,11 +29,11 @@ var OtterSchema = new mongoose.Schema({
  //validations
  name:  { type: String, required: true, minlength: 3},
  height: { type: Number, min: 1, max: 150 },
- Weight: { type: Number, min: 1, max: 150 },
+ weight: { type: Number, min: 1, max: 150 },
 }, {timestamps: true});
 
 //Model
-// Mongoose automatically looks for the plural version of your model name, so a Otter model in Mongoose looks for 'otter' in Mongo.
+// Mongoose automatically looks for the plural version of your model name, so a Otter model in Mongoose looks for 'otters' in Mongo.
 mongoose.model('Otter', OtterSchema); // We are setting this Schema in our Models as 'Otter'
 var Otter = mongoose.model('Otter') // We are retrieving this Schema from our Models, named 'Otter'
 
@@ -41,10 +41,10 @@ var Otter = mongoose.model('Otter') // We are retrieving this Schema from our Mo
 
 //Homepage
 app.get('/', function(req, res) {
-	Otter.find({}, function(err, results) { 
+	Otter.find({}, function(err, otters) { 
       console.log(otters);   
+      res.render('home', {otters: otters});
   })
-	 res.render('home', {otters: results});
 })
 
 //New animal page
@@ -73,24 +73,69 @@ app.post('/otters', function(req, res) {
         }
         else {
         	console.log('successfully added a otter!');
-	 		res.redirect('home');
+	 		    res.redirect('/');
 		}
 	})
 })
 
+//Otters_show
 //Animal edit page, uses animals id, and shows that particular document.
 app.get('/otters/:id', function(req, res) {
-	Otter.find({ _id: req.params.id }, function(err, otter_item) {
+	Otter.find({ _id: req.params.id }, function(err, otter) {
         if(err) {
             console.log(err);
             res.redirect('/' + req.params.id);
         } 
         else {
             console.log("Otter id =", req.params.id);
-            res.render('otter_show', {otter: otter_item});
+            res.render('otter_show', {otter: otter});
         }
     });
 })
+
+//otters_edit
+app.get('/otters/edit/:id', function(req, res) {
+  Otter.findOne({ _id: req.params.id }).lean().exec(function(err, otter) {
+        if(err) {
+            console.log(err);
+            res.redirect('/' + req.params.id);
+        } else {
+            console.log("otter id=", req.params.id);
+            res.render('otter_edit', {otter: otter });
+        }
+    });
+   
+})
+
+
+//form for updating otter.
+app.post('/otters/:id', function(req, res) {
+    //updateOne() takes the item to filer, and then the items to be updated
+   Otter.update({ _id: req.params.id }, {name: req.body.name, height: req.body.height, weight: req.body.weight}, function(err){
+    if(err) {
+            console.log(err);
+            console.log("Otter was not updated. Try again.")
+            res.redirect('/otters/' + req.params.id);
+        } else { 
+            //redirects home to see the otter added.
+            console.log("New Otter Added!");
+            res.redirect('/');
+        }
+  })
+})
+
+app.post('/destroy/:id', function(req, res) {
+    Otter.remove({ _id: req.params.id }, function(err){
+      if(err) {
+            console.log(err);
+            res.redirect('/otters/' + req.params.id);
+        } else { 
+            //redirects home to see the otter deleted. 
+            console.log("Sayonara, Otter!");
+            res.redirect('/');
+        }
+  });
+});
 
 
 //listen

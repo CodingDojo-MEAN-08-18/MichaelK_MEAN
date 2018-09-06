@@ -5,7 +5,7 @@
 </head>
 <body>
 	<h1>Edit the selected Otter.</h1>
-	<form action="/otters/edit/<%= otter._id %>">
+	<form action="/otters/<%= otter._id %>">
 		<label>Name:<input type="text" name="name" value="<%= otter.name %>"></label>
 		<label>Height:<input type="text" name="name" value="<%= otter.height %>"></label>
 		<label>Weight:<input type="text" name="name" value="<%= otter.weight %>"></label>

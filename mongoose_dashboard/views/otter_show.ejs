@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show Otter</title>
+</head>
+<body>
+	<h1>Otters Data</h1>
+	<% if (otter) { %>
+	<!-- otter[0] because we want the first otter in the array! !-->
+		<p><strong><%= otter[0].name %></strong></p>
+		<p><%= otter[0].height %></p>
+		<p><%= otter[0].weight %></p>
+	<% } %>
+
+
+</body>
+</html>

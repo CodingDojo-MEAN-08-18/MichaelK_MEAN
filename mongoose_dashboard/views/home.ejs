@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Otters</title>
+</head>
+<body>
+	<h1>Welcome to the otter Homepage.</h1>
+	<h2>Here you can view your otters</h2>
+	<p><strong>Insert cat id here to delete</strong></p>
+	<% for (var i = 0; i < otters.length; i++) { %>
+		<p><strong><%= otters[i].name %></strong></p>
+		<p><%= otters[i].weight %> lbs.</p>
+		<p><%= otters[i].height %> ft.</p>
+		<a href="/destroy/<%= otters[i]._id %>">Remove</a>
+		<hr>
+		<% } %>
+</body>
+</html>
