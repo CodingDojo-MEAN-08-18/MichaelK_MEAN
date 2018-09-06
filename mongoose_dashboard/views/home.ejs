@@ -6,12 +6,15 @@
 <body>
 	<h1>Welcome to the otter Homepage.</h1>
 	<h2>Here you can view your otters</h2>
-	<p><strong>Insert cat id here to delete</strong></p>
 	<% for (var i = 0; i < otters.length; i++) { %>
 		<p><strong><%= otters[i].name %></strong></p>
 		<p><%= otters[i].weight %> lbs.</p>
 		<p><%= otters[i].height %> ft.</p>
-		<a href="/destroy/<%= otters[i]._id %>">Remove</a>
+		<!--remove has to be sent via post so it needs a form instead of a <a> tag. !-->
+		<form action="/destroy/<%= otters[i]._id %>" method="post">
+			<input type="hidden" name="otter_id" value="<%= otters[i]._id %>">
+			<button>Remove</button>
+		</form>
 		<hr>
 		<% } %>
 </body>
