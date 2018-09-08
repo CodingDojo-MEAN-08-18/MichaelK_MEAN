@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<% if (session) { %>
+		<h1>Welcome,</h1>
+		<p><strong><%= session.first_name %></strong></p>
+		<p><%= session.email %></p>
+		<% } %>
+	
+</body>
+</html>
