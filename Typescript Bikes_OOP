@@ -1,0 +1,5 @@
+class Bike {
+	price: number;
+	miles: number;
+	max_speed: number;
+}
