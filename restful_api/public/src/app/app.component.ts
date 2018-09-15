@@ -9,9 +9,9 @@ import { HttpService } from './http.service';
 
 export class AppComponent {
        title = 'Restful Task/Angular';
-       tasks: any;	//Sets type to any data type. 
-       oneTask: any;
-       newTask: {};
+       tasks: [];	//Sets type to an array. 
+       oneTask: any;//Sets type to any data type.
+       newTask: {};	//sets type to an object.
        //Here we can use classes from the http.Service.ts
        constructor(private _httpService: HttpService){
        		this.newTask = {name:'', description:''}
@@ -52,12 +52,14 @@ export class AppComponent {
        		})
        		
        	}
-       	updateServiceTask(_id: string, taskData){
-       		let observable = this._httpService.updateTask(_id, taskData)
-
-
+       	updateServiceTask(_id: string, newTaskData){
+       		let observable = this._httpService.updateTask(_id, newTaskData)
+       		observable.subscribe(data => {
+       			console.log("Changing task to...", data)
+       			this.getAllServiceTasks()
+       		})
        	}
 
        
-}
+}//Close appComponent
 

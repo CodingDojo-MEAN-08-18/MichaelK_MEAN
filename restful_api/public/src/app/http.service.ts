@@ -22,8 +22,8 @@ export class HttpService {
   createTask(newTask){
     return this._http.post('/task', newTask)
   }
-  updateTask(_id, taskData){
-    return this._http.put(`/task/${_id}`, taskData)
+  updateTask(_id, newTaskData){
+    return this._http.put(`/task/${_id}`, newTaskData)
   }
 }
 
