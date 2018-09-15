@@ -7,14 +7,24 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent {
        title = 'Restful Task/Angular';
        tasks: any;	//Sets type to any data type. 
        oneTask: any;
+       newTask: {};
        //Here we can use classes from the http.Service.ts
        constructor(private _httpService: HttpService){
+       		this.newTask = {name:'', description:''}
 
        }
+
+        createTask(){
+		    let taskObservable=this._httpService.createTask(this.newTask)
+		    taskObservable.subscribe(data=>{
+		      console.log("Creating a new task..", data)
+		      this.getAllServiceTasks()
+		   })
+		 }
 
        	//gets all tasks/home
        	getAllServiceTasks(){
@@ -42,8 +52,8 @@ export class AppComponent implements OnInit {
        		})
        		
        	}
-       	updateServiceTask(_id: string){
-       		let observable = this._httpService.updateTask(_id)
+       	updateServiceTask(_id: string, taskData){
+       		let observable = this._httpService.updateTask(_id, taskData)
 
 
        	}
