@@ -16,15 +16,17 @@ export class AppComponent implements OnInit {
 
        //Here we can use classes from the http.Service.ts
        constructor(private _httpService: HttpService){
+
        }
 
        ngOnInit(){
+       	//Gets invoked right away.
        		this.newTask = {name:'', description:''}       	
        }
 
         createTask(newTask){
         	console.log("In component..")
-		    let taskObservable=this._httpService.createTask(this.newTask)
+		    let taskObservable = this._httpService.createTask(this.newTask)
 		    taskObservable.subscribe(data=>{
 		      console.log("Creating a new task..", data)
 		      this.getAllServiceTasks()

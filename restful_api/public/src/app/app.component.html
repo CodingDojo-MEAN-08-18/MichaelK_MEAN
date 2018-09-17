@@ -1,5 +1,4 @@
 
-  
  <!DOCTYPE html>
 <html>
 <head>
@@ -9,20 +8,37 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <p> {{ newTask | json }} </p>
   <form (submit)="createTask()">
    Task Name: <input type='text' name="name" [(ngModel)]='newTask.name'/>
     Description: <input type='text' name="description" [(ngModel)]='newTask.description'/>
     <input type='submit' value='Create Task'/>
   </form>
   
+  <!-- Will fill table with tasks !-->
   <button (click)="getAllServiceTasks()">All Tasks</button>
-  <!-- Implements a for loop for all the tasks using *ngfor !-->
-  <div class="all_tasks" *ngFor="let task of tasks">
-    <p><strong>{{task.name}}</strong></p>
-    <p>{{task.description}}</p>
-    <p>{{task.createdAt}}</p>
-    <hr>    
-  </div>
+    <table>
+    <thead>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>View</th>
+      <th>Delete</th>
+      <th>Edit</th>
+    </thead>
+    <tbody>
+      <!-- Implements a for loop for all the tasks using *ngfor !-->
+      <tr *ngFor="let task of tasks">
+        <td>{{task._id}}</td>
+        <td>{{task.name}}</td>
+        <td>{{task.description}}</td>
+        <td><button (click)="getOneTask(task._id)">View Task</button></td>
+        <td><button (click)='deleteTask(task._id)'>Delete task</button></td>
+        <td><button (click)='updateTask(task._id)'>Edit task</button></td>
+      </tr>
+    </tbody>
+  </table>
+   
 
 </body>
 </html>

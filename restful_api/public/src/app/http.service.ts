@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +22,7 @@ export class HttpService {
     return this._http.delete(`/remove/${_id}`)
   }
   createTask(newTask){
+  	//Sends an object to backend. Must be an object!
   	console.log("HTTP Request")
     return this._http.get(`/new`, newTask)
   }
