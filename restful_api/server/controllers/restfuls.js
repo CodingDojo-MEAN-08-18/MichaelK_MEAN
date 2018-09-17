@@ -20,7 +20,7 @@ module.exports = {
      console.log("POST DATA", req.body);
 	 //creates new user instance
 
-	 var task = new Task({title: req.params.title, description: req.params.description, completion: req.params.completion});
+	 var task = new Task({title: req.body.title, description: req.body.description});
 	 task.save(function(err, data){
             if (err) {
                 res.json({message: "Error", error: err});
@@ -44,7 +44,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({data});
+                res.json({message: "Showing task...", data});
             }
         })
     },
@@ -53,7 +53,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({data});
+                res.json({message: "Updating task...", data});
             }
         })
     }

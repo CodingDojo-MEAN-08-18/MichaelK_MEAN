@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
 
 @Component({
@@ -7,18 +7,23 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
        title = 'Restful Task/Angular';
        tasks: [];	//Sets type to an array. 
        oneTask: any;//Sets type to any data type.
-       newTask: {};	//sets type to an object.
+       newTask: any;;	//sets type to an object.
+
+
        //Here we can use classes from the http.Service.ts
        constructor(private _httpService: HttpService){
-       		this.newTask = {name:'', description:''}
-
        }
 
-        createTask(){
+       ngOnInit(){
+       		this.newTask = {name:'', description:''}       	
+       }
+
+        createTask(newTask){
+        	console.log("In component..")
 		    let taskObservable=this._httpService.createTask(this.newTask)
 		    taskObservable.subscribe(data=>{
 		      console.log("Creating a new task..", data)
@@ -33,7 +38,8 @@ export class AppComponent {
        		//once return console log it and assign data to tasks to be shown in view.
        		observable.subscribe(data => {
        			console.log("Here are all the tasks", data)
-       			this.tasks = data;
+       			// In this example, the array of tasks is assigned to the key 'tasks' in the data object. 
+       			this.tasks = data['tasks'];
        		})
        	}
        	//takes an id parameter

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Restful Task</title>
+</head>
+<body>
+	<form (submit)='createTask()'>
+    <label>Create Task:</label>
+   Task Name: <input type='text' name='newTask.name' placeholder='task name' [(ngModel)]='newTask.name'/>
+    Description: <input type='text' name='newTask.description' placeholder='description' [(ngModel)]='newTask.description'/>
+    <input type='submit' value='Create Task' class='submit_button'/>
+  </form>
+  
+  <div class="all_tasks">
+  	<button (click)="getAllServiceTasks()">All Tasks</button>
+  </div>
+
+</body>
+</html>

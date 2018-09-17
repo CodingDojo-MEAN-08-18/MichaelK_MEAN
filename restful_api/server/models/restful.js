@@ -6,7 +6,6 @@ var mongoose = require('mongoose');
 var TaskSchema = new mongoose.Schema({
  title:  { type: String, required: true, minlength: 1},
  description:  { type: String, required: true, minlength: 1},
- completion: { type: Boolean, required: true }
 }, {timestamps: true});
 
 //Get database

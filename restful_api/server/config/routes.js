@@ -7,13 +7,13 @@ module.exports = function(app){
 	app.get('/tasks', apiController.index),
 
 	//Adds name to database
-	app.post('/new/:title/:description/:completion', apiController.add),
+	app.post('/new', apiController.add),
 
 	//Removes name from database
 	app.delete('/remove/:id', apiController.remove),
 
 	//Retrieve a Task by ID
-	app.get('/:id', apiController.show),
+	app.get('task/:id', apiController.show),
 
 	app.put('/update/:id', apiController.update)
 

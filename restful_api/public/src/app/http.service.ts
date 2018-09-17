@@ -11,19 +11,21 @@ export class HttpService {
    }
   
   getAllTasks(){
-    return this._http.get('/task')
+  	//Returning the observables to be used int the app.component.
+    return this._http.get('/tasks')
   }
   getOneTask(_id){
     return this._http.get(`/task/${_id}`)
   }
   deleteTask(_id){
-    return this._http.delete(`/task/${_id}`)
+    return this._http.delete(`/remove/${_id}`)
   }
   createTask(newTask){
-    return this._http.post('/task', newTask)
+  	console.log("HTTP Request")
+    return this._http.get(`/new`, newTask)
   }
   updateTask(_id, newTaskData){
-    return this._http.put(`/task/${_id}`, newTaskData)
+    return this._http.put(`/update/${_id}`, newTaskData)
   }
 }
 
