@@ -9,7 +9,7 @@ import { HttpService } from './http.service';
 
 export class AppComponent implements OnInit {
        title = 'Restful Task/Angular';
-       tasks: [];	//Sets type to an array. 
+       tasks = [];	//Sets type to an array. 
        oneTask: any;//Sets type to any data type.
        newTask: any;;	//sets type to an object.
 
@@ -21,15 +21,16 @@ export class AppComponent implements OnInit {
 
        ngOnInit(){
        	//Gets invoked right away.
-       		this.newTask = {name:'', description:''}       	
+       		this.getAllServiceTasks()
+       		this.newTask = {title:'', description:''}       	
        }
 
         createTask(newTask){
         	console.log("In component..")
+        	console.log(this.newTask)
 		    let taskObservable = this._httpService.createTask(this.newTask)
 		    taskObservable.subscribe(data=>{
 		      console.log("Creating a new task..", data)
-		      this.getAllServiceTasks()
 		   })
 		 }
 
@@ -41,7 +42,7 @@ export class AppComponent implements OnInit {
        		observable.subscribe(data => {
        			console.log("Here are all the tasks", data)
        			// In this example, the array of tasks is assigned to the key 'tasks' in the data object. 
-       			this.tasks = data['tasks'];
+       			this.tasks = data['data'];
        		})
        	}
        	//takes an id parameter

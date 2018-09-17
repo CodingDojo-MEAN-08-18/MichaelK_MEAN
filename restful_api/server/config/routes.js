@@ -7,7 +7,7 @@ module.exports = function(app){
 	app.get('/tasks', apiController.index),
 
 	//Adds name to database
-	app.get('/new', apiController.add),
+	app.post('/new', apiController.add),
 
 	//Removes name from database
 	app.delete('/remove/:id', apiController.remove),

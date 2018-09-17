@@ -10,7 +10,7 @@
   </h1>
   <p> {{ newTask | json }} </p>
   <form (submit)="createTask()">
-   Task Name: <input type='text' name="name" [(ngModel)]='newTask.name'/>
+   Task Name: <input type='text' name="title" [(ngModel)]='newTask.title'/>
     Description: <input type='text' name="description" [(ngModel)]='newTask.description'/>
     <input type='submit' value='Create Task'/>
   </form>

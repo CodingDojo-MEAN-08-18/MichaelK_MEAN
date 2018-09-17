@@ -24,7 +24,7 @@ export class HttpService {
   createTask(newTask){
   	//Sends an object to backend. Must be an object!
   	console.log("HTTP Request")
-    return this._http.get(`/new`, newTask)
+    return this._http.post(`/new`, newTask)
   }
   updateTask(_id, newTaskData){
     return this._http.put(`/update/${_id}`, newTaskData)
