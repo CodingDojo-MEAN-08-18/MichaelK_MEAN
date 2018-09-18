@@ -24,12 +24,15 @@ export class HttpService {
   createTask(newTask){
   	//Sends an object to backend. Must be an object!
   	console.log("HTTP Request")
+  	//Sends new task to be created.
     return this._http.post(`/new`, newTask)
   }
-  updateTask(_id, newTaskData){
+  updateTask(newTaskData){
   	console.log("preparing to update")
-    return this._http.put(`/update/${_id}`, newTaskData)
+  	//Sends new object to be updated along with id. 
+    return this._http.put(`/update/${newTaskData._id}`, newTaskData)
   }
-}
+}//End of export
+
 
 

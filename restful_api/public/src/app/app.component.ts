@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
        task_clicked = false;
        edit_task_toggle = false;
        editTask: any;
+       task: any;
 
        //Here we can use classes from the http.Service.ts
        constructor(private _httpService: HttpService){
@@ -66,18 +67,21 @@ export class AppComponent implements OnInit {
        		
        	}
        	populateUpdateFields(task){
-       		console.log("populating fields", task)
-       		this.editTask.id = this.task._id
-       		this.editTask.title = this.task.title
-       		this.editTask.description = this.task.description
+       		//takes the whole task object selected in html and sets it to edit task to be used in updateServiceTask fields.
+       		console.log(task)
+       		this.edit_task_toggle = true;
+       		this.editTask.id = task._id
+       		this.editTask.title = task.title
+       		this.editTask.description = task.description
        	}
        	updateServiceTask(editTask){
-       		let observable = this._httpService.updateTask(_id, this.editTask)
+       		//Takes the edit task and sends it to the service then the database to be updated.
+       		let observable = this._httpService.updateTask(editTask)
        		observable.subscribe(data => {
        			console.log("Changing task to...", data)
-       			this.edit_task_toggle = true;
-       			this.newTaskData.title = data['data'].title;
-       			this.newTaskData.description = data['data'].description;
+       			//uses data got back and assigns it to edit task.
+       			this.editTask.title = data['data'].title;
+       			this.editTask.description = data['data'].description;
        		})
        	}
 
