@@ -13,7 +13,7 @@ module.exports = function(app){
 	app.delete('/remove/:id', apiController.remove),
 
 	//Retrieve a Task by ID
-	app.get('task/:id', apiController.show),
+	app.get('/task/:id', apiController.show),
 
 	app.put('/update/:id', apiController.update)
 

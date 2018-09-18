@@ -13,7 +13,7 @@ export class HttpService {
   
   getAllTasks(){
   	//Returning the observables to be used int the app.component.
-    return this._http.get('/tasks')
+    return this._http.get(`/tasks`)
   }
   getOneTask(_id){
     return this._http.get(`/task/${_id}`)
@@ -27,6 +27,7 @@ export class HttpService {
     return this._http.post(`/new`, newTask)
   }
   updateTask(_id, newTaskData){
+  	console.log("preparing to update")
     return this._http.put(`/update/${_id}`, newTaskData)
   }
 }

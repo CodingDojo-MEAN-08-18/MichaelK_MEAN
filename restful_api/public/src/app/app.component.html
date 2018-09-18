@@ -27,17 +27,35 @@
       <th>Edit</th>
     </thead>
     <tbody>
+
       <!-- Implements a for loop for all the tasks using *ngfor !-->
       <tr *ngFor="let task of tasks">
         <td>{{task._id}}</td>
-        <td>{{task.name}}</td>
+        <td>{{task.title}}</td>
         <td>{{task.description}}</td>
-        <td><button (click)="getOneTask(task._id)">View Task</button></td>
-        <td><button (click)='deleteTask(task._id)'>Delete task</button></td>
-        <td><button (click)='updateTask(task._id)'>Edit task</button></td>
+        <td><button (click)="getOneServiceTask(task._id)">View Task</button></td>
+        <td><button (click)='removeServiceTask(task._id)'>Delete task</button></td>
+        <td><button (click)='populateUpdateFields(task._id)'>Edit task</button></td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Initiates Edit !-->
+  <div *ngIf="edit_task_toggle == true" class="editTask">
+    <h2>Edit your task here</h2>
+    {{ newTaskData | json }}
+  <form (submit)='updateServiceTask(newTaskData._id)'>
+   Title: <input type='text' name='newTaskData.title' [(ngModel)]='newTaskData.title'>
+   Description: <input type='text' name='newTaskData.description' [(ngModel)]='newTaskData.description'>
+    <input type='submit' value='Update'>
+  </form>
+  </div>
+  <div *ngIf="task_clicked == true">
+    <h1>Here is the task you wanted to show</h1>
+    <p><strong>{{oneTask.title}}</strong></p>
+    <p><strong>{{oneTask.description}}</strong></p>
+  </div>
+
    
 
 </body>
