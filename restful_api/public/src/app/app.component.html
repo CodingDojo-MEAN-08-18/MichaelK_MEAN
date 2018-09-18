@@ -51,12 +51,15 @@
   </form>
   </div>
 
-  <!-- Shows the task !-->
+  <!--Binds selectedTask variable in task component to one task variable in root component. !-->
+  <app-task *ngIf='oneTask' [selectedTask]='oneTask'></app-task>
+  <!-- Shows the task 
   <div *ngIf="task_clicked == true">
     <h1>Here is the task you wanted to show</h1>
     <p><strong>{{oneTask.title}}</strong></p>
     <p><strong>{{oneTask.description}}</strong></p>
   </div>
+  !-->
 
    
 
