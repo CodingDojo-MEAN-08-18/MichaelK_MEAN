@@ -1,0 +1,9 @@
+
+
+<h1>Create an Author</h1>
+<form (submit) = "createAuthor()">
+	<label>Enter an author name:</label>
+	<input type="text" name="author.name" [(ngModel)] = author.name>
+	<input type="submit" name="submit" value="Submit">
+</form>
+<button [routerLink] = "authors">Home</button>

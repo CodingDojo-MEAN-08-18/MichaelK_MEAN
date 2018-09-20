@@ -1,0 +1,20 @@
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Author ID</th>
+			<th>Author</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor = "let author of authors">
+			<td>{{author.id}}</td>
+			<td>{{author.name}}</td>
+		</tr>
+	</tbody>
+</table>
+<!-- Uses router link to send to the create and edit components !-->
+<button [routerLink]="new/author">Create Author</button>
+<button [routerLink]="edit/author">Edit Author</button>
