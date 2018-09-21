@@ -13,12 +13,14 @@
 			<!-- Interpolation !-->
 			<td>{{author.id}}</td>
 			<td>{{author.name}}</td>
+			<td><button [routerLink] = "['edit/+author.id']">Edit Author</button>
+			<button (click) = "removeOneAuthor(author.id)">Delete Author</button></td>
+			
 		</tr>
 	</tbody>
 </table>
 <!-- Uses router link to send to the create and edit components !-->
-<button [routerLink] = ["new/author"]>Create Author</button>
+<button routerLink = '/new/author'>Create Author</button>
 <!-- routerLink passes author.id to the editComponent !-->
 <!-- routerLink passes an array !-->
-<button [routerLink] = ["edit/+author.id"]>Edit Author</button>
-<button (click) = "removeOneAuthor(author.id)">Delete Author</button>
+

@@ -13,10 +13,7 @@ app.use(express.static( __dirname + '/public/dist/public' ));
 app.use(bodyParser.json());
 
 
-// this route will be triggered if any of the routes above did not matchcopy
-app.all("*", (req,res,next) => {
-  res.sendFile(path.resolve("./public/dist/public/index.html"))
-});
+
 
 require('./server/config/mongoose.js');
 
@@ -24,6 +21,11 @@ require('./server/config/mongoose.js');
 // since routes.js exports a function, server.js will receive that function
 // invoke the function we get from the require and pass it app as an argument
 require('./server/config/routes.js')(app)
+
+// this route will be triggered if any of the routes above did not matchcopy
+app.all("*", (req,res,next) => {
+  res.sendFile(path.resolve("./public/dist/public/index.html"))
+});
 
 //listen
 var server = app.listen(8000, function() {

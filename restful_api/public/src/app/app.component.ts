@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
        newTask: any;;	//sets type to an object.
        task_clicked = false;
        edit_task_toggle = false;
-       editTask: {};
+       editTask: any;
        task: any;
 
        //Here we can use classes from the http.Service.ts
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
        	//Gets invoked right away.
        		this.getAllServiceTasks()
        		this.newTask = {title:'', description:''}
-       		this.editTask = {id:'', title:'', description:''}      	
+       		this.editTask = {_id:'', title:'', description:''}      	
        }
 
         createTask(newTask){
@@ -70,7 +70,7 @@ export class AppComponent implements OnInit {
        		//takes the whole task object selected in html and sets it to edit task to be used in updateServiceTask fields.
        		console.log(task)
        		this.edit_task_toggle = true;
-       		this.editTask.id = task._id
+       		this.editTask._id = task._id
        		this.editTask.title = task.title
        		this.editTask.description = task.description
        	}

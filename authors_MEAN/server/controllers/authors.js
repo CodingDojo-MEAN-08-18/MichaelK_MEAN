@@ -14,7 +14,7 @@ module.exports = {
         }
         else {
             // respond with JSON
-           res.json({message: "Success", data: data})
+           res.json(data)
         }
      })
     },
@@ -27,7 +27,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Success: ", data: data});
+                res.json(data);
             }
         })
     },
@@ -39,7 +39,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Showing Author...", data: data});
+                res.json(data);
             }
         })
     },
@@ -50,7 +50,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Updating Author...", data: data});
+                res.json(data);
             }
         })
     },
