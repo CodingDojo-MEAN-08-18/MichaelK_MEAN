@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from './../http.service';
+import { ActivatedRoute, RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit',
@@ -6,10 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+	  author: any;
+	  id: number;
 
-  constructor() { }
+
+  constructor(private _http: HttpService, 
+  			  private _router: Router,
+  	          private _route: ActivatedRoute) { 
+  	//Activated route has an observable, 'params' that we can subscribe too, 
+  	//in order to get the id passed via the /authors page when you click the edit button.
+  	this._route.params.subscribe(params => {this.id = params.id});
+  }
+
 
   ngOnInit() {
+  	this.author = {name: '', id: this.id}
+  	
+  }
+
+  editAuthor(author){
+  	let observable = this._http.editAuthorService(this.author)
+  	observable.subscribe(data => {
+  		console.log("In edit component")
+  		console.log(data)
+  		//Navigates back to authors homepage to see edited changes.
+  		this._router.navigate(['/authors'])
+  	})
+
   }
 
 }

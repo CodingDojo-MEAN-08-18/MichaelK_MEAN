@@ -11,17 +11,19 @@ class Bike {
     displayInfo = () => {
         return console.log("Price is $" + this.price + ", max speed is " + this.max_speed + ", miles is " + this.miles);
     }
+
     ride = () => {
         this.miles = this.miles + 10;
-        console.log("Riding...");
+        console.log("Rideeee...");
         return this;
     }
+
     reverse = () => {
     	//so that miles cannot be lower than 5.
         if (this.miles >= 5) {
             this.miles = this.miles - 5;
         }
-        console.log("Reversing...");
+        console.log("Reverseeee...");
         return this;
     }
 }

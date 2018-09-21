@@ -1,3 +1,7 @@
-<p>
-  edit works!
-</p>
+
+<h1>Edit an Author Here</h1>
+<form (submit) = "editAuthor()">
+	<input type="text" name="author.name" [(ngModel)] = "author.name">
+	<input type="submit" name="submit" Value="Submit">
+</form>
+<button [routerLink] = ["/authors"]></button>

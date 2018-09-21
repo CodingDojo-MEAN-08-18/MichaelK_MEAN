@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
        newTask: any;;	//sets type to an object.
        task_clicked = false;
        edit_task_toggle = false;
-       editTask: any;
+       editTask: {};
        task: any;
 
        //Here we can use classes from the http.Service.ts
@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
        ngOnInit(){
        	//Gets invoked right away.
        		this.getAllServiceTasks()
-       		this.newTask = {title:'', description:''} 
-       		this.editTask = {title:'', description:'', _id:''}      	
+       		this.newTask = {title:'', description:''}
+       		this.editTask = {id:'', title:'', description:''}      	
        }
 
         createTask(newTask){
@@ -74,9 +74,9 @@ export class AppComponent implements OnInit {
        		this.editTask.title = task.title
        		this.editTask.description = task.description
        	}
-       	updateServiceTask(editTask){
+       	updateServiceTask(_id: string, editTask){
        		//Takes the edit task and sends it to the service then the database to be updated.
-       		let observable = this._httpService.updateTask(editTask)
+       		let observable = this._httpService.updateTask(_id, this.editTask)
        		observable.subscribe(data => {
        			console.log("Changing task to...", data)
        			//uses data got back and assigns it to edit task.

@@ -27,7 +27,7 @@ export class HttpService {
   	//Sends new task to be created.
     return this._http.post(`/new`, newTask)
   }
-  updateTask(newTaskData){
+  updateTask(id, newTaskData){
   	console.log("preparing to update")
   	//Sends new object to be updated along with id. 
     return this._http.put(`/update/${newTaskData._id}`, newTaskData)

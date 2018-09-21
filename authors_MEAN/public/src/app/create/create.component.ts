@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   }
 
   createAuthor(author){
+  	console.log("In Create component")
   	let observable = this._http.createAuthorService(this.author)
   	observable.subscribe(data =>{
   		console.log("New Author added..", data)

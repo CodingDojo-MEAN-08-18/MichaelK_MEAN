@@ -12,10 +12,5 @@ export class AppComponent {
    title = 'Pokemon API';
    constructor(private _httpService: HttpService){
     }
-
-    Mike = {
-    	height: 62,
-    	weight: 220,
-    	
-    }
+ 	
  }

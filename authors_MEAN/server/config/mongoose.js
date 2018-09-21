@@ -3,7 +3,7 @@ var path = require("path");
 var fs = require('fs');
 
 //connecting database defined in terminal.
-mongoose.connect('mongodb://localhost/tasks');
+mongoose.connect('mongodb://localhost/authors');
 
 // create a variable that points to the models folder
 var models_path = path.join(__dirname, './../models');

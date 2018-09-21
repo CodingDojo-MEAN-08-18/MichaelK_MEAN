@@ -7,12 +7,14 @@ module.exports = function(app){
 	app.get('api/authors', apiController.index),
 
 	//Adds name to database
+	console.log("Im in the server routes")
 	app.post('api/new', apiController.add),
+
 
 	//Retrieve a Task by ID
 	app.get('api/author/:id', apiController.show),
 
-	app.put('api/update/:id', apiController.update)
+	app.put('api/update/:id', apiController.update),
 
 	//Removes name from database
 	app.delete('api/remove/:id', apiController.remove),	

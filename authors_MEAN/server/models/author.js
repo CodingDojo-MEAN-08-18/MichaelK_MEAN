@@ -11,7 +11,7 @@ var AuthorSchema = new mongoose.Schema({
   //Validations requires name field and min length of characters is 3 along with message to be displayed upon error. max character length is 20.
   name: {type: String, required: [true, "Name must be entered."], minlength: [3, "Name must be at least 3 characters"], maxlength: 20},
   //sets quote key in author model to set one to many relationship
-  quotes: [QuoteSchema]
+ // quotes: [QuoteSchema]
 })
 
 

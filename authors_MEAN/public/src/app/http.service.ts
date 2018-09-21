@@ -33,4 +33,4 @@ export class HttpService {
   removeQuoteService(id){
   	return this._http.delete('/api/remove/quote/:id')
   }
-}
+}//End of routes

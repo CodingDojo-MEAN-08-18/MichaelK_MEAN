@@ -14,7 +14,7 @@ module.exports = {
         }
         else {
             // respond with JSON
-           res.json({message: "Success", data})
+           res.json({message: "Success", data: data})
         }
      })
     },
@@ -27,9 +27,9 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Success: ", data});
+                res.json({message: "Success: ", data: data});
             }
-        });
+        })
     },
 
     //Finds one Author to show.
@@ -39,7 +39,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Showing Author...", data});
+                res.json({message: "Showing Author...", data: data});
             }
         })
     },
@@ -50,7 +50,7 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Updating Author...", data});
+                res.json({message: "Updating Author...", data: data});
             }
         })
     },
@@ -62,9 +62,9 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err})
             } else {
-                res.json({message: "Removed Successfully: ", data});
+                res.json({message: "Removed Successfully: ", data: data});
             }
-        });
+        })
     },
 
     addQuote: function(req, res) {
@@ -73,26 +73,26 @@ module.exports = {
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
-                res.json({message: "Success: ", data});
+                res.json({message: "Success: ", data: data});
             }
-        });
+        })
         //Then push/add quote to Author's quote array.
         Author.findByIdAndUpdate(req.params.id, {$push: {quotes: req.body}}, function(err, data){
         	if (err) {
                 res.json({message: "Error", error: err})
             } else {
-                res.json({message: "Quote added Successfully: ", data});
+                res.json({message: "Quote added Successfully: ", data: data});
             }
-		});
-	    },
+		})
+	},
 
 	removeQuote: function(req, res){
 	    Author.findOneAndUpdate(req.params.id, {$pull: {'quotes': { _id: req.params.id}}}, function(err, data){
 	    	if (err) {
                 res.json({message: "Error", error: err})
             } else {
-                res.json({message: "Quote removed Successfully: ", data});
+                res.json({message: "Quote removed Successfully: ", data: data});
             }
-	    });
+	    })
 	}
 }; //End of exports
