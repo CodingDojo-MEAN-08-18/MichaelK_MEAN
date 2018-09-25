@@ -1,0 +1,6 @@
+
+<h1>Notes:</h1>
+  <span *ngFor = "let note of notes">
+  <p>{{note.createdAt | date: 'medium'}}</p>
+  <p><strong>{{note.content}}</strong></p>
+</span>

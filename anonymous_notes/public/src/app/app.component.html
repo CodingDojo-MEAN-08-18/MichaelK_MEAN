@@ -1,0 +1,8 @@
+<h1>Welcome to the Anonymous Notes App</h1>
+<form (submit) = "createNote()">
+  <label>
+    Note:<input type="text" name="note"[(ngModel)] = "note.content" >
+  </label>
+  <input type="submit" name="submit" value="Add a note">
+</form>
+<app-notes></app-notes>
