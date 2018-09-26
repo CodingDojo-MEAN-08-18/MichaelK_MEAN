@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { ManageplayersComponent } from './manageplayers/manageplayers.component';
 import { ListComponent } from './list/list.component';
 import { AddplayerComponent } from './addplayer/addplayer.component';
 import { ManageplayerstatusComponent } from './manageplayerstatus/manageplayerstatus.component';
+import { Game1Component } from './game1/game1.component';
 
 const routes: Routes = [
 	{path: 'managePlayers', component: ManageplayersComponent, children: [
 			{path: 'listPlayers', component: ListComponent},
-			{path: 'addPlayers', component: AddplayerComponent}]//End of children
+			{path: 'addPlayer', component: AddplayerComponent}
+			]//End of children
 		},//End of parent
 	{path: 'managePlayerStatus', component: ManageplayerstatusComponent, children: [
-			{path: 'game1', component: Game1Component},
-			{path: 'game2', component: Game2Component},
-			{path: 'game3', component: Game3Component}]
-		}
+			{path: 'game/:gameNum', component: Game1Component}
+			]//End of children
+		}//End of parent			
 ];//End of routes
 
 @NgModule({

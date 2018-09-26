@@ -33,7 +33,7 @@ module.exports = {
 
     //Deletes Author from the database
     remove: function(req, res) {
-    	//Grabs the id from url parameter and deletes the Author from batabse.
+    	//Grabs the id from url parameter and deletes the player from batabse.
         Player.remove({_id: req.params.id }, function(err, data) {
             if (err) {
                 res.json({message: "Error", error: err})

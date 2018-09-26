@@ -1,3 +1,8 @@
-<p>
-  addplayer works!
-</p>
+<div>
+	<h1>Add a player</h1>
+	<form (submit) = "addPlayer()">
+		Name: <input type="text" name="player" [(ngModel)] = "player.name">
+		Position: <input type="text" name="position" [(ngModel)] = "player.position">
+		<input type="submit" name="submit" value="Add">
+	</form>
+</div>

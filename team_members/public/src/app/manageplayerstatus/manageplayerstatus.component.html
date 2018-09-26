@@ -1,3 +1,8 @@
-<p>
-  manageplayerstatus works!
-</p>
+
+<h1>Player Status - Game{{gameNum}}</h1>
+<a [routerLink] = "['game', '1']" (click)='Game(1)'>Game 1</a> |
+<a [routerLink] = "['game', '2']" (click)='Game(2)'>Game 2</a> |
+<a [routerLink] = "['game', '3']" (click)='Game(3)'>Game 3</a>
+
+<!-- Dont forget the router-outlet to show the child component!!! !-->
+<router-outlet></router-outlet>

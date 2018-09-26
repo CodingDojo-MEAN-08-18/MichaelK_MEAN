@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageplayerstatusComponent implements OnInit {
 
+	gameNum: any;
+
   constructor() { }
 
   ngOnInit() {
+  	this.gameNum
+  }
+
+  game(num){
+  	this.gameNum = num;
   }
 
 }

@@ -1,3 +1,32 @@
-<p>
-  game1 works!
-</p>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Actions</th>
+		</tr>		
+	</thead>
+	<tbody>
+		<tr *ngFor = "let player of players">
+			<td>{{player.name}}</td>
+			<td>
+				<span *ngIf = "gameNum == 1">
+					<button (click) = "playing(player._id, gameNum)">Playing</button>
+					<button (click) = "notPlaying(player._id, gameNum)">Not Playing</button>
+					<button (click) = "undecided(player._id, gameNum)">Undecided</button>					
+				</span>
+				<span *ngIf = "gameNum == 2">
+					<button (click) = "playing(player._id, gameNum)">Playing</button>
+					<button (click) = "notPlaying(player._id, gameNum)">Not Playing</button>
+					<button (click) = "undecided(player._id, gameNum)">Undecided</button>					
+				</span>
+				<span *ngIf = "gameNum == 3">
+					<button (click) = "playing(player._id, gameNum)">Playing</button>
+					<button (click) = "notPlaying(player._id, gameNum)">Not Playing</button>
+					<button (click) = "undecided(player._id, gameNum)">Undecided</button>					
+				</span>
+			</td>
+		</tr>		
+	</tbody>
+</table>

@@ -1,0 +1,9 @@
+div {
+	height: 600px;
+	width: 800px;
+	border: 5px solid black;
+}
+
+table tbody td {
+	margin-right: 50px;
+}
