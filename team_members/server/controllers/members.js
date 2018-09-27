@@ -41,6 +41,16 @@ module.exports = {
                 res.json({message: "Removed Successfully: ", data});
             }
         })
+    },
+
+     update: function(req, res) {
+        Task.update({ _id: req.params.id }, {title: req.body.title, description: req.body.description}, function(err, data){
+            if (err) {
+                res.json({message: "Error", error: err});
+            } else {
+                res.json(data);
+            }
+        })
     }
 
 }//End of exports
