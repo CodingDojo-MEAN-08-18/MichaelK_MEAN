@@ -22,12 +22,14 @@ export class EditComponent implements OnInit {
 
 
   ngOnInit() {
-  	this.author = {name: '', id: this.id}
+  	this.author = {name: "", _id: this.id}
   	
   }
 
   editAuthor(author){
+    console.log(author)
   	let observable = this._http.editAuthorService(this.author)
+    console.log(this.author)
   	observable.subscribe(data => {
   		console.log("In edit component")
   		console.log(data)

@@ -13,7 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
 	{path: 'authors', component:AuthorsComponent},
 	{path: 'new/author', component:CreateComponent},
-	{path: 'edit/:id', component:EditComponent},
+	{path: 'authors/edit/:id', component:EditComponent},
 	{path: 'quotes', component:QuotesComponent},
 	{path: 'new/quote', component:AddQuoteComponent},
 	{path: '**', component:PageNotFoundComponent},

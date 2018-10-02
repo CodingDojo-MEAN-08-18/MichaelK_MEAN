@@ -22,6 +22,7 @@ require('./server/config/mongoose.js');
 // invoke the function we get from the require and pass it app as an argument
 require('./server/config/routes.js')(app)
 
+//This "catch-all" route must be the very last route to be triggered and belongs at the end of the server.js
 // this route will be triggered if any of the routes above did not matchcopy
 app.all("*", (req,res,next) => {
   res.sendFile(path.resolve("./public/dist/public/index.html"))

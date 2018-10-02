@@ -11,10 +11,11 @@
 	<tbody>
 		<tr *ngFor = "let author of authors">
 			<!-- Interpolation !-->
-			<td>{{author.id}}</td>
+			<td>{{author._id}}</td>
 			<td>{{author.name}}</td>
-			<td><button [routerLink] = "['edit/+author.id']">Edit Author</button>
-			<button (click) = "removeOneAuthor(author.id)">Delete Author</button></td>
+			<td><button [routerLink] = "['edit/'+author._id]">Edit Author</button>
+			<td><button routerLink = "new/quote"></button></td>
+			<button (click) = "removeOneAuthor(author._id)">Delete Author</button></td>
 			
 		</tr>
 	</tbody>

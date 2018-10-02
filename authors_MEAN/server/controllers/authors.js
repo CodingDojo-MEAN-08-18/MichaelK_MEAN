@@ -46,7 +46,8 @@ module.exports = {
 
     //Edits/Updates the Author in database.
     update: function(req, res) {
-        Author.update({ _id: req.params.id }, {title: req.body.name}, function(err, data){
+        console.log("updating")
+        Author.update({ _id: req.params.id }, {name: req.body.name}, function(err, data){
             if (err) {
                 res.json({message: "Error", error: err});
             } else {
